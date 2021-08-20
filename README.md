@@ -12,16 +12,17 @@ Based on an [amimaro gist](https://gist.githubusercontent.com/amimaro/10e879ccb5
 - [x] SSL-Certificate configuration ( Check https://stackoverflow.com/questions/11403333/httplistener-with-https-support )
 
 ## Test
-You can test the unity http listener by cloning the unity-http-listener-sample repository 
+You can test the unity http listener by downloading the [unity-http-listener-sample] repository (https://github.com/sachaamm/unity-http-listener-sample)
 
 
 ## Configure 
-Your HttpListener webserver is running under urls defined in the [http-listener-config file](https://github.com/sachaamm/unity-http-listener/blob/main/http-listener-config.json).
+Your HttpListener webserver is running under urls defined in the [http-listener-config file](https://github.com/sachaamm/unity-http-listener-sample/blob/main/http-listener-config.json).
 ```json 
 {"urlBases":["http://localhost:4444"]}
 ```
 
 So by default, the webserver is running in localhost on the port 4444. You can use this files to setup your development/production environment as you wish.
+( See the [unity-http-listener-sample] repository ) to get a file example.
 
 ## Integration of unity-http-listener in a Unity Project
 ### Does my project is a git repository ? 
