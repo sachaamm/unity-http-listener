@@ -28,8 +28,8 @@ So by default, the webserver is running in localhost on the port 4444. You can u
 ### Does my project is a git repository ? 
  - YES : 
    - #### Does ****** 
-   - YES : 
-   - NO :
+     - YES : 
+     - NO :
  - NO :
 
 
