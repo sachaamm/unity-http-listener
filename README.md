@@ -35,7 +35,10 @@ So by default, the webserver is running in localhost on the port 4444. You can u
 **IN ANY CASE :**  You will need to copy the [http-listener-config file](https://github.com/sachaamm/unity-http-listener/blob/main/http-listener-config.json). in the Assets parent folder ( at the root of your project )
 
 ## Import unity-http-listener as a submodule in a git repository
-
+Inside your git repository : 
+```
+git submodule add https://github.com/sachaamm/unity-http-listener
+```
 
 
 ## Import unity-http-listener in any Unity version as a package
