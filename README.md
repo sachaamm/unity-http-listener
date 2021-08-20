@@ -49,7 +49,7 @@ git submodule add https://github.com/sachaamm/unity-http-listener
 ## Export unity-http-listener as a package
  1. Create a Unity project in any version you want
  2. Clone this repository in the Unity project
- 3. Right click on the repository main root folder ( unity-http-listener ), click export as a package, select all files in the repository.
+ 3. Right click on the repository main root folder ( unity-http-listener ), inside Unity editor  click export as a package, select all files in the repository.
 
 
 ## the Hello-World Controller Example 
