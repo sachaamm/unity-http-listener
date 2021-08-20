@@ -36,11 +36,18 @@ So by default, the webserver is running in localhost on the port 4444. You can u
 ## Import unity-http-listener as a submodule in a git repository
 
 
-## Export unity-http-listener as a package
 
 ## Import unity-http-listener in any Unity version as a package
-You can easily import the project as a package in any Unity version with [UnityHttpListener package file](https://github.com/sachaamm/unity-http-listener/blob/main/UnityHttpListener.unitypackage) provided in the repository. You will need to copy also the [http-listener-config file](https://github.com/sachaamm/unity-http-listener/blob/main/http-listener-config.json). in the Assets parent folder ( at the root of your project )
+- You can easily import the project as a package in any Unity version with [UnityHttpListener package file](https://github.com/sachaamm/unity-http-listener/blob/main/UnityHttpListener.unitypackage) provided in the repository 
+- OR 
+- You can export the entire repository content as a package to be sure to get latests unity-http-listener features embedded (Check section "Export unity-http-listener as a package"). 
 
+**IN ANY CASE :**  You will need to copy the [http-listener-config file](https://github.com/sachaamm/unity-http-listener/blob/main/http-listener-config.json). in the Assets parent folder ( at the root of your project )
+
+## Export unity-http-listener as a package
+ 1. Create a Unity project in any version you want
+ 2. Clone this repository in the Unity project
+ 3. Right click on the repository main root folder ( unity-http-listener ), click export as a package, select all files in the repository.
 
 
 ## the Hello-World Controller Example 
