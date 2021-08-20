@@ -12,9 +12,8 @@ Based on an [amimaro gist](https://gist.githubusercontent.com/amimaro/10e879ccb5
 - [x] SSL-Certificate configuration ( Check https://stackoverflow.com/questions/11403333/httplistener-with-https-support )
 
 ## Test
- - 1. Open Assets/TestScene. 
- - 2. Run the scene. 
- - 3. Open the [postman collection file joined](https://github.com/sachaamm/unity-http-listener/blob/main/UnityHttpListener.postman_collection.json) in postman. You can run requests samples via Postman. For text/html content type responses you can also use your web-browser with @GET routes.
+You can test the unity http listener by cloning the unity-http-listener-sample repository 
+
 
 ## Configure 
 Your HttpListener webserver is running under urls defined in the [http-listener-config file](https://github.com/sachaamm/unity-http-listener/blob/main/http-listener-config.json).
