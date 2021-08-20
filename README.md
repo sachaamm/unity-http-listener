@@ -30,7 +30,7 @@ So by default, the webserver is running in localhost on the port 4444. You can u
    - #### Does I care to get the ability to pull unity-http-listener new versions directly from my repository, avoiding to do step "Export unity-http-listener as a package", even upgrades of this repository will be very rare but I consider to use [git submodules features](https://git-scm.com/book/en/v2/Git-Tools-Submodules) is a good practice / a practice I need to use or learn ? 
      - YES : Go to "Import unity-http-listener as a submodule in a git repository"
      - NO : Go to "Import unity-http-listener in any Unity version as a package" 
- - NO : Go to "Import unity-http-listener in any Unity version as a package" 
+ - NO : Go to "Import unity-http-listener in any Unity version as a package" OR clone this repository inside your project. Then you will be able to pull last features
   
 **IN ANY CASE :**  You will need to copy the [http-listener-config file](https://github.com/sachaamm/unity-http-listener/blob/main/http-listener-config.json). in the Assets parent folder ( at the root of your project )
 
