@@ -104,7 +104,7 @@ namespace UnityCustomHttpListener.Demo.Controller
         /// <summary>
         /// Get one parameter in query string example 
         /// </summary>
-        /// Request : POST http://localhost:4444/addPerson
+        /// Request : POST http://localhost:4444/addPerson/
         /// <param name="request"></param>
         /// <returns></returns>
         [MyRestRoute("/addPerson/", HttpRestMethod.POST,HttpResponseUtility.HttpResponseContentType.Json)]
@@ -125,7 +125,7 @@ namespace UnityCustomHttpListener.Demo.Controller
         /// <summary>
         /// Get one parameter in query string example 
         /// </summary>
-        /// Request : POST http://localhost:4444/addPersonAsync
+        /// Request : POST http://localhost:4444/addPersonAsync/
         /// <param name="request"></param>
         /// <returns></returns>
         [MyRestRoute("/addPersonAsync/", HttpRestMethod.POST,HttpResponseUtility.HttpResponseContentType.Json)]
@@ -144,9 +144,12 @@ namespace UnityCustomHttpListener.Demo.Controller
         public const string ObjectsMapExampleGameObjectsListKey = "EXAMPLE_GAMEOBJECTS_LIST";
 
         /// <summary>
-        /// Get one parameter from ObjectsMap.
+        /// Get one parameter from ObjectsMap injected from the mainThread in GameObjectsCountDataInjector.
+        /// Controller methods are called in a separate thread. A common issue is to inject MonoBehaviour / GameObject data via separate threads.
+        /// Unity is thread safe so you cannot get data out from the main thread. A way to counter this issue is to pass GameObjects
+        /// data through your own Serializable models. ( in this example GameObjectInScene ). Check GameObjectsCountDataInjector.
         /// </summary>
-        /// Request : GET http://localhost:4444/addPerson
+        /// Request : GET http://localhost:4444/gameObjectsCount/
         /// <param name="request"></param>
         /// <returns></returns>
         [MyRestRoute("/gameObjectsCount/", HttpRestMethod.GET,HttpResponseUtility.HttpResponseContentType.Json, ObjectsMapExampleGameObjectsListKey)]
