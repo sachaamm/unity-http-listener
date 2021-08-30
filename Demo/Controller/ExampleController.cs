@@ -144,7 +144,7 @@ namespace UnityCustomHttpListener.Demo.Controller
         public const string ObjectsMapExampleGameObjectsListKey = "EXAMPLE_GAMEOBJECTS_LIST";
 
         /// <summary>
-        /// Get one parameter from ObjectsMap injected from the mainThread in GameObjectsCountDataInjector.
+        /// Get object list from ObjectsMap injected from the mainThread in GameObjectsCountDataInjector.
         /// Controller methods are called in a separate thread. A common issue is to inject MonoBehaviour / GameObject data via separate threads.
         /// Unity is thread safe so you cannot get data out from the main thread. A way to counter this issue is to pass GameObjects
         /// data through your own Serializable models. ( in this example GameObjectInScene ). Check GameObjectsCountDataInjector.
@@ -154,7 +154,6 @@ namespace UnityCustomHttpListener.Demo.Controller
         /// <returns></returns>
         [MyRestRoute("/gameObjectsCount/", HttpRestMethod.GET,HttpResponseUtility.HttpResponseContentType.Json, ObjectsMapExampleGameObjectsListKey)]
         public HttpResponseTemplate GameObjectsInSceneCount(HttpListenerRequest request, List<object> objects)
-
         {
             GameObjectsCountResult result = new GameObjectsCountResult();
 
