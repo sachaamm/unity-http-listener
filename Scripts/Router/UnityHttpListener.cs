@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Scripts.Model;
+using STONE_TRIBES.Scripts.Mono.Environment_And_Global_Vars;
 using UnityCustomHttpListener.Demo.Model;
 using UnityCustomHttpListener.Scripts.Attribute;
+using UnityCustomHttpListener.Scripts.Client;
 using UnityCustomHttpListener.Scripts.Model;
 using UnityCustomHttpListener.Scripts.Utility;
 using UnityEngine;
@@ -25,11 +29,16 @@ namespace UnityCustomHttpListener.Scripts.Router
         public static UnityHttpListener Singleton;
 
         private List<HttpController> routerControllers = new List<HttpController>();
-
+        
+        // Je recois, je transmets.
+        public static Dictionary<string, List<object>> ObjectsMap = new Dictionary<string, List<object>>();
+        
         private void Awake()
         {
             Singleton = this;
         }
+        
+        
 
         private void Start()
         {
@@ -40,6 +49,14 @@ namespace UnityCustomHttpListener.Scripts.Router
 
             Init(config.urlBases);
         }
+
+        public static void SetValueInObjectMap(string key, List<object> list)
+        {
+            ObjectsMap[key] = list;
+        }
+        
+        
+        #region Init Routes and Thread
         
         public void Init(List<string> urlBases)
         {
@@ -140,7 +157,10 @@ namespace UnityCustomHttpListener.Scripts.Router
 
             return routesLocalPaths;
         }
-
+        
+        #endregion
+        
+        
         private async void ListenerCallback (IAsyncResult result)
         {				
             HttpListenerContext context = listener.EndGetContext (result);		
@@ -231,12 +251,34 @@ namespace UnityCustomHttpListener.Scripts.Router
                             MyRestRouteAttribute mr = attr as MyRestRouteAttribute;
                             if (mr.Name == localUrl && mr.Method.ToString() == httpRestMethod)
                             {
-                                object[] parameters = new object[] {request};
+
+                                List<object> listFromObjectMap = new List<object>();
+
+                                if (mr.DataKey != null)
+                                {
+                                    if (ObjectsMap.ContainsKey(mr.DataKey))
+                                    {
+                                        listFromObjectMap = ObjectsMap[mr.DataKey];
+                                    }
+                                    else
+                                    {
+                                        Debug.LogError(
+                                            "Key " + mr.DataKey + " is missing in ObjectsMap. " +
+                                            "Have you forgot to set the key value from a the main thread ?");
+                                    }
+                                }
+
+                                object[] parameters = new object[] {request, listFromObjectMap};
+                                if (listFromObjectMap.Count == 0) parameters = new object[] {request};
                             
                                 HttpResponse httpResponse = new HttpResponse();
                                 httpResponse.RouteAttributes = mr;
 
+                                // UnityHttpListenerRequestCallback cb = new UnityHttpListenerRequestCallback();
+                                // cb.CallbackUrl = mr.CallbackUrl;
+                                // callbacks.Add(cb);
                                 object methodResult = httpController.MethodInfo.Invoke(httpController.instance, parameters);
+                                
 
                                 if (methodResult.GetType() == typeof(HttpResponseTemplate))
                                 {

@@ -141,6 +141,31 @@ namespace UnityCustomHttpListener.Demo.Controller
             return HttpResponseUtility.Created(resultDataText);
         }
 
+        public const string ObjectsMapExampleGameObjectsListKey = "EXAMPLE_GAMEOBJECTS_LIST";
+
+        /// <summary>
+        /// Get one parameter from ObjectsMap.
+        /// </summary>
+        /// Request : GET http://localhost:4444/addPerson
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [MyRestRoute("/gameObjectsCount/", HttpRestMethod.GET,HttpResponseUtility.HttpResponseContentType.Json, ObjectsMapExampleGameObjectsListKey)]
+        public HttpResponseTemplate GameObjectsInSceneCount(HttpListenerRequest request, List<object> objects)
+
+        {
+            GameObjectsCountResult result = new GameObjectsCountResult();
+
+            List<GameObjectInScene> gameObjectInScenes = new List<GameObjectInScene>();
+            
+            foreach (var o in objects)
+            {
+                gameObjectInScenes.Add(o as GameObjectInScene);
+            }
+
+            result.GameObjectInScenes = gameObjectInScenes;
+            
+            return HttpResponseUtility.Ok(JsonUtility.ToJson(result));
+        }
         
         
     }

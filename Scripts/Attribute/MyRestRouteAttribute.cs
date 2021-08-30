@@ -5,23 +5,28 @@ namespace UnityCustomHttpListener.Scripts.Attribute
 {
     public class MyRestRouteAttribute : System.Attribute
     {
+        
         private string name;
-
         public string Name => name;
 
-        public HttpRestMethod Method => method;
-
         private HttpRestMethod method;
+        public HttpRestMethod Method => method;
+        
 
         private HttpResponseUtility.HttpResponseContentType _contentType;
-
         public HttpResponseUtility.HttpResponseContentType ContentType => _contentType;
 
-        public MyRestRouteAttribute(string name, HttpRestMethod httpRestMethod, HttpResponseUtility.HttpResponseContentType contentType)  
+        private string dataKey;
+        public string DataKey => dataKey;
+
+        public MyRestRouteAttribute(string name, HttpRestMethod httpRestMethod, HttpResponseUtility.HttpResponseContentType contentType, string key = null)  
         {  
             this.name = name;
             this.method = httpRestMethod;
             _contentType = contentType;
+            dataKey = key;
+
+
         }
     }
 }
