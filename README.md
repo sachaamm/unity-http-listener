@@ -92,9 +92,12 @@ For more examples, check the [ExampleController](https://github.com/sachaamm/uni
 
 
 ## Controllers and Routes
-A controller is dispatching RestRoutes which can be HttpResponseTemplate or Task<HttpResponseTemplate>. A controller is labelled by the attrbute [MyApiController].
-A controller's route is labelled by the attribute [MyRestRoute]
-UnityHttpListener is injecting all controllers routes with [reflection](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/reflection) and this is why we use attributes to label routes and controllers. Methods are called from a separate thread, this means that you cannot use GameObject/MonoBehaviour references out from main thread.
+A controller is dispatching RestRoutes which can be HttpResponseTemplate or Task<HttpResponseTemplate>. A controller is labelled by the attrbute **[MyApiController]**.
+A controller's route is labelled by the attribute **[MyRestRoute]**
+UnityHttpListener is injecting all controllers routes with [reflection](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/reflection) and this is why we use attributes to label routes and controllers. 
+
+## MainThread vs ControllerThreads
+Methods are called from a separate thread, this means that you cannot use GameObject/MonoBehaviour references directly out of the main thread.
 Check ExampleController -> GameObjectsInSceneCount() to understand how this issue is avoided.
  
 ## Fork me !
