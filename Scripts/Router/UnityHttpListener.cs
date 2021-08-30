@@ -136,9 +136,7 @@ namespace UnityCustomHttpListener.Scripts.Router
                     
                 }
             }
-            // var routerTypes = 
-            
-            
+     
 
             return routesLocalPaths;
         }
