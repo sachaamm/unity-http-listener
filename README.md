@@ -87,7 +87,7 @@ using UnityEngine;
         }
 ```
 
-For more examples, check the [ExampleController](https://github.com/sachaamm/unity-http-listener/blob/main/Assets/UnityCustomHttpListener/Demo/Controller/ExampleController.cs) file. For more explanations, you can also go to Controllers and Routes section
+For more examples, check the [ExampleController](https://github.com/sachaamm/unity-http-listener/blob/main/Demo/Controller/ExampleController.cs) file. For more explanations, you can also go to Controllers and Routes section
 
 
 
