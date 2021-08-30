@@ -42,7 +42,7 @@ git submodule add https://github.com/sachaamm/unity-http-listener
 
 
 ## Import unity-http-listener in any Unity version as a package
-- You can easily import the project as a package in any Unity version with [UnityHttpListener package file](https://github.com/sachaamm/unity-http-listener/blob/main/UnityHttpListener.unitypackage) provided in the repository 
+- You can easily import the project as a package in any Unity version with [UnityHttpListener package file](https://github.com/sachaamm/unity-http-listener-sample/blob/main/UnityHttpListener.unitypackage) from the unity-http-listener-sample repository  provided in the repository 
 - OR 
 - You can export yourself the entire repository content as a package to be sure to get latests unity-http-listener features embedded (in that case, Check section "Export unity-http-listener as a package"). 
 
