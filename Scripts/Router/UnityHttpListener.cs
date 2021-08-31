@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Scripts.Model;
+using Scripts.Service;
 using STONE_TRIBES.Scripts.Mono.Environment_And_Global_Vars;
 using UnityCustomHttpListener.Demo.Model;
 using UnityCustomHttpListener.Scripts.Attribute;
@@ -183,6 +184,15 @@ namespace UnityCustomHttpListener.Scripts.Router
 
             try
             {
+
+                // waitingForEventToRaiseBool = true;
+                //
+                // waitingForEventToRaise.SetResult(true);
+                //
+                // await waitingForEventToRaise.Task;
+                
+                UnityHttpListenerReceiveRequestService.ReceiveRequest();
+                
                 Task<HttpResponse> httpResponseTask = GetResponseForUrl(context.Request, context.Request.Url.LocalPath,
                     context.Request.HttpMethod);
 
@@ -318,6 +328,26 @@ namespace UnityCustomHttpListener.Scripts.Router
 
             return httpResponse;
         }
+
+        // private bool waitingForEventToRaise = false;
+        // private int waiting = 0;
+        // private int waitingMax = 1000;
+        // private bool waitingForEventToRaiseBool = false;
+        // TaskCompletionSource<bool> waitingForEventToRaise = new TaskCompletionSource<bool>();
+        
+        // void Update()
+        // {
+        //     // if (waitingForEventToRaiseBool)
+        //     // {
+        //     //     waiting++;
+        //     //     Debug.Log("Increase waiting " + waiting);
+        //     //     if (waiting >= waitingMax)
+        //     //     {
+        //     //         waitingForEventToRaise.SetResult(false);
+        //     //         waitingForEventToRaiseBool = false;
+        //     //     }           
+        //     // }
+        // }
         
     }
 }

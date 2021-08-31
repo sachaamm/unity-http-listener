@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Scripts.Service;
 using UnityCustomHttpListener.Demo.Controller;
 using UnityCustomHttpListener.Demo.Model;
 using UnityCustomHttpListener.Scripts.Router;
@@ -10,8 +11,13 @@ namespace UnityCustomHttpListener.Demo.DataInjector
 {
     public class GameObjectsCountDataInjector : MonoBehaviour
     {
+
+        void Update()
+        {
+            InjectData();
+        }
         
-        private void Update()
+        void InjectData()
         {
             GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>() ;
             List<object> list = allObjects.Select(go => ConvertGameObjectToModel(go) as object).ToList();
