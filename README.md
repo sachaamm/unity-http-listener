@@ -19,7 +19,7 @@ You can test the unity http listener by downloading the [unity-http-listener-sam
 ## Configure 
 Your HttpListener webserver is running under urls defined in the [http-listener-config file](https://github.com/sachaamm/unity-http-listener-sample/blob/main/http-listener-config.json).
 ```json 
-{"urlBases":["http://localhost:4444"]}
+{"urlBases":["http://localhost:4444"]} // You can also use "http://*:4444" to allow all ips going to 4444
 ```
 
 So by default, the webserver is running in localhost on the port 4444. You can use this files to setup your development/production environment as you wish.
@@ -92,10 +92,14 @@ For more examples, check the [ExampleController](https://github.com/sachaamm/uni
 
 
 ## Controllers and Routes
-A controller is dispatching RestRoutes which can be HttpResponseTemplate or Task<HttpResponseTemplate>. A controller is labelled by the attrbute [MyApiController].
-A controller's route is labelled by the attribute [MyRestRoute]
-UnityHttpListener is injecting all controllers routes with [reflection](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/reflection) and this is why we use attributes to label routes and controllers.
+A controller is dispatching RestRoutes which can be HttpResponseTemplate or Task<HttpResponseTemplate>. A controller is labelled by the attribute **[MyApiController]**.
+A controller's route is labelled by the attribute **[MyRestRoute]**
+UnityHttpListener is injecting all controllers routes with [reflection](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/reflection) and this is why we use attributes to label routes and controllers. 
 
+## MainThread vs ControllerThreads
+Methods are called from a separate thread, this means that you cannot use GameObject/MonoBehaviour references directly out of the main thread.
+Check ExampleController -> GameObjectsInSceneCount() to understand how this issue is avoided.
+ 
 ## Fork me !
 You can fork the repo 
     
