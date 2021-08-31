@@ -9,12 +9,12 @@ namespace Scripts.Service
         
         private void Start()
         {
-            UnityHttpListenerReceiveRequestService.OnReceiveRequest += ReceiveRequest;
+            // UnityHttpListenerReceiveRequestService.OnReceiveRequest += ReceiveRequest;
         }
         
         private void OnDestroy()
         {
-            UnityHttpListenerReceiveRequestService.OnReceiveRequest -= ReceiveRequest;
+            // UnityHttpListenerReceiveRequestService.OnReceiveRequest -= ReceiveRequest;
         }
         
         void ReceiveRequest(object send, bool b)

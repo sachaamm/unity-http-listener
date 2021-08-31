@@ -191,7 +191,7 @@ namespace UnityCustomHttpListener.Scripts.Router
                 //
                 // await waitingForEventToRaise.Task;
                 
-                UnityHttpListenerReceiveRequestService.ReceiveRequest();
+                // UnityHttpListenerReceiveRequestService.ReceiveRequest();
                 
                 Task<HttpResponse> httpResponseTask = GetResponseForUrl(context.Request, context.Request.Url.LocalPath,
                     context.Request.HttpMethod);
