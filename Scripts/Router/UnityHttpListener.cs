@@ -33,6 +33,8 @@ namespace UnityCustomHttpListener.Scripts.Router
         
         // Je recois, je transmets.
         public static Dictionary<string, List<object>> ObjectsMap = new Dictionary<string, List<object>>();
+
+        public bool autoStart = true;
         
         private void Awake()
         {
@@ -42,6 +44,11 @@ namespace UnityCustomHttpListener.Scripts.Router
         
 
         private void Start()
+        {
+           if(autoStart) StartListener();
+        }
+
+        public void StartListener()
         {
             string path = Directory.GetCurrentDirectory() + "/http-listener-config.json";
 
@@ -274,7 +281,7 @@ namespace UnityCustomHttpListener.Scripts.Router
                                     {
                                         Debug.LogError(
                                             "Key " + mr.DataKey + " is missing in ObjectsMap. " +
-                                            "Have you forgot to set the key value from a the main thread ?");
+                                            "Have you forgot to set the key value from the main thread ?");
                                     }
                                 }
 
