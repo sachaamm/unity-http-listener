@@ -95,21 +95,31 @@ namespace UnityCustomHttpListener.Scripts.Router
                 listener.Prefixes.Add (url);
             }
 
+        
             listener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
-            listener.Start ();
-
+            listener.Start();
+            
+            
+            
             listenerThread = new Thread (startListener);
             listenerThread.Start ();
             
+            
         }
-        
+
+        private void OnDisable()
+        {
+            listener.Close();
+            // listenerThread.
+        }
+
         /// <summary>
         /// Loop listening for incoming HTTP Requests.
         /// </summary>
         private void startListener ()
         {
             while (true) {               
-                var result = listener.BeginGetContext (ListenerCallback, listener);
+                IAsyncResult result = listener.BeginGetContext (ListenerCallback, listener);
                 result.AsyncWaitHandle.WaitOne ();
             }
         }
