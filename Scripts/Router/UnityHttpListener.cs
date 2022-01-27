@@ -109,7 +109,7 @@ namespace UnityCustomHttpListener.Scripts.Router
 
         private void OnDisable()
         {
-            listener.Close();
+            if(listener != null && listener.IsListening) listener.Close();
             // listenerThread.
         }
 
