@@ -3,16 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Scripts.Model;
-using Scripts.Service;
-using STONE_TRIBES.Scripts.Mono.Environment_And_Global_Vars;
-using UnityCustomHttpListener.Demo.Model;
 using UnityCustomHttpListener.Scripts.Attribute;
-using UnityCustomHttpListener.Scripts.Client;
 using UnityCustomHttpListener.Scripts.Model;
 using UnityCustomHttpListener.Scripts.Utility;
 using UnityEngine;
@@ -109,7 +103,7 @@ namespace UnityCustomHttpListener.Scripts.Router
 
         private void OnDisable()
         {
-            if(listener != null && listener.IsListening) listener.Close();
+            listener.Close();
             // listenerThread.
         }
 
