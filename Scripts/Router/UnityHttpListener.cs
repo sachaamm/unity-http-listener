@@ -29,6 +29,8 @@ namespace UnityCustomHttpListener.Scripts.Router
         public static Dictionary<string, List<object>> ObjectsMap = new Dictionary<string, List<object>>();
 
         public bool autoStart = true;
+
+        private bool isListening = false;
         
         private void Awake()
         {
@@ -89,21 +91,19 @@ namespace UnityCustomHttpListener.Scripts.Router
                 listener.Prefixes.Add (url);
             }
 
+            isListening = true;
         
             listener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
             listener.Start();
             
-            
-            
             listenerThread = new Thread (startListener);
             listenerThread.Start ();
-            
             
         }
 
         private void OnDisable()
         {
-            listener.Close();
+            isListening = false;
             // listenerThread.
         }
 
@@ -174,8 +174,13 @@ namespace UnityCustomHttpListener.Scripts.Router
         
         
         private async void ListenerCallback (IAsyncResult result)
-        {				
-            HttpListenerContext context = listener.EndGetContext (result);		
+        {
+            if (!isListening)
+            {
+                return; 
+            }
+            
+            HttpListenerContext context = listener?.EndGetContext (result);		
 
             Debug.Log ("Method: " + context.Request.HttpMethod);
             Debug.Log ("LocalUrl: " + context.Request.Url.LocalPath);
